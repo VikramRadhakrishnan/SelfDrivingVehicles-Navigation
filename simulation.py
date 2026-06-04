@@ -212,14 +212,14 @@ def main():
         nonlocal obstacles, car_x, car_y, car_angle, trail, reached, stuck_timer
         obstacles = generate_obstacles()
         car_x, car_y = float(START_X), float(START_Y)
-        car_angle = -math.pi / 4
+        car_angle = math.pi / 4
         trail = []
         reached = False
         stuck_timer = 0.0
         reset_algorithm_state()
 
     car_x, car_y = float(START_X), float(START_Y)
-    car_angle = -math.pi / 4
+    car_angle = math.pi / 4
     trail = []
     reached = False
     stuck_timer = 0.0
