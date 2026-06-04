@@ -46,12 +46,12 @@ GOAL_X  = MAZE_W - MARGIN
 GOAL_Y  = MARGIN
 
 # ── Obstacle generation ───────────────────────────────────────────────────────
-OBS_COUNT  = 14
-OBS_MIN_W  = 40
-OBS_MAX_W  = 90
-OBS_MIN_H  = 30
-OBS_MAX_H  = 70
-CLEAR_ZONE = 55
+OBS_COUNT  = 9
+OBS_MIN_W  = 30
+OBS_MAX_W  = 65
+OBS_MIN_H  = 22
+OBS_MAX_H  = 50
+CLEAR_ZONE = 65
 
 
 def generate_obstacles():
@@ -204,7 +204,7 @@ def main():
     btn_w = SIDEBAR_W - 2 * pad
 
     dropdown = Dropdown(sidebar_x + pad, 80, btn_w, 28, ALGO_NAMES, font_sm)
-    reset_btn = Button(sidebar_x + pad, 160, btn_w, 36, "Reset Maze", font_md, RED)
+    reset_btn = Button(sidebar_x + pad, 232, btn_w, 32, "Reset Maze", font_md, RED)
 
     obstacles = generate_obstacles()
 
@@ -345,7 +345,7 @@ def main():
         reset_btn.draw(screen)
 
         # Info panel
-        info_y = 220
+        info_y = 282
         pygame.draw.rect(screen, (60, 65, 80),
                          (sidebar_x + pad, info_y, btn_w, 130), border_radius=6)
         infos = [
@@ -382,7 +382,7 @@ def main():
             screen.blit(lt, (sidebar_x + pad + 5, status_y + 8 + i * 18))
 
         # Legend
-        legend_y = 360
+        legend_y = 430
         legends = [
             (BLUE,        "Car"),
             (GOAL_COLOR,  "Goal"),
@@ -390,7 +390,7 @@ def main():
             (OBS_COLOR,   "Obstacle"),
         ]
         leg_title = font_sm.render("Legend:", True, LIGHT_GRAY)
-        screen.blit(leg_title, (sidebar_x + pad, legend_y - 18))
+        screen.blit(leg_title, (sidebar_x + pad, legend_y - 16))
         for i, (c, lbl) in enumerate(legends):
             ly = legend_y + i * 22
             pygame.draw.rect(screen, c, (sidebar_x + pad, ly + 4, 14, 14), border_radius=3)
