@@ -197,11 +197,13 @@ The Stanley controller was used by Stanford's *Stanley* robot to win the 2005 DA
 
 Uses the same greedy waypoint path as Pure Pursuit, but the steering law combines two error terms:
 
-$$\delta = \psi_e + \arctan\!\left(\frac{k \cdot e}{v}\right)$$
+```
+δ = ψ_e + arctan(k · e / v)
+```
 
-- **Heading error** $\psi_e$: difference between the car's heading and the path tangent direction.
-- **Cross-track error** $e$: signed perpendicular distance from the car to the nearest path segment (positive = car is left of path).
-- $k$: gain; $v$: speed.
+- **Heading error** ψ_e: difference between the car's heading and the path tangent direction.
+- **Cross-track error** e: signed perpendicular distance from the car to the nearest path segment (positive = car is left of path).
+- k: gain; v: speed.
 
 At high speed the cross-track correction is small (smooth); at low speed it can be large (aggressive re-centering).
 
@@ -227,12 +229,14 @@ Potential Field navigation treats the environment as a scalar field and moves th
 
 **How it works:**
 
-- The goal exerts an **attractive force**: $\mathbf{F}_{att} = k_{att} \cdot (\mathbf{q}_{goal} - \mathbf{q})$
-- Each obstacle exerts a **repulsive force** when the robot is within influence radius $d_0$:
+- The goal exerts an **attractive force**: `F_att = k_att · (q_goal − q)`
+- Each obstacle exerts a **repulsive force** when the robot is within influence radius d₀:
 
-$$\mathbf{F}_{rep} = k_{rep} \left(\frac{1}{d} - \frac{1}{d_0}\right) \frac{1}{d^2} \hat{\mathbf{d}} \quad \text{if } d < d_0$$
+```
+F_rep = k_rep · (1/d − 1/d₀) · (1/d²) · d̂    (when d < d₀)
+```
 
-where $d$ is the distance to the nearest point on the obstacle surface and $\hat{\mathbf{d}}$ is the unit vector away from it.
+where d is the distance to the nearest point on the obstacle surface and d̂ is the unit vector pointing away from it.
 
 The total force is normalised to a direction, and the car steers toward that direction.
 
