@@ -208,9 +208,10 @@ def main():
 
     obstacles = generate_obstacles()
 
-    def reset(keep_algo=True):
+    def reset(new_obstacles=True):
         nonlocal obstacles, car_x, car_y, car_angle, trail, reached, stuck_timer
-        obstacles = generate_obstacles()
+        if new_obstacles:
+            obstacles = generate_obstacles()
         car_x, car_y = float(START_X), float(START_Y)
         car_angle = math.pi / 4
         trail = []
@@ -240,7 +241,7 @@ def main():
                 running = False
 
             if dropdown.handle_event(event):
-                reset()
+                reset(new_obstacles=False)
 
             if reset_btn.handle_event(event):
                 reset()
